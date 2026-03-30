@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>African Restaurants in the U.S.</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.29/"></script>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    .esri-legend {
+      background: white;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="viewDiv"></div>
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/layers/CSVLayer",
+      "esri/widgets/Legend"
+    ], function(Map, MapView, CSVLayer, Legend) {
+
+      const url = "african_restaurants.csv"; // CSV with expanded list (photo column unused)
+
+      const template = {
+        title: "{name}",
+        content: "{description}<br><b>Location:</b> {city}, {state}"
+      };
+
+      const csvLayer = new CSVLayer({
+        url: url,
+        copyright: "African Restaurants Dataset",
+        popupTemplate: template,
+        renderer: {
+          type: "simple",
+          symbol: {
+            type: "picture-marker",
+            url: "https://cdn-icons-png.flaticon.com/512/3075/3075977.png", // Fork and knife icon
+            width: "24px",
+            height: "24px"
+          },
+          label: "African Restaurants" // Custom label for legend
+        }
+      });
+
+      const map = new Map({
+        basemap: "streets-navigation-vector",
+        layers: [csvLayer]
+      });
+
+      const view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-95, 39],
+        zoom: 4
+      });
+
+      const legend = new Legend({
+        view: view
+      });
+
+      view.ui.add(legend, "bottom-right");
+
+    });
+  </script>
+</body>
+</html>
