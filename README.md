@@ -94,6 +94,9 @@ CSV Data → ArcGIS API (CSVLayer) → Map Rendering → Symbolization → Popup
 
 ---
 
+## Live Map
+https://www.siue.edu/~kaguti/FinalProject.html
+
 ## Author
 Kalusha Aguti  
 M.S. Geography (GIS & Remote Sensing)  
