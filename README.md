@@ -99,5 +99,5 @@ https://www.siue.edu/~kaguti/FinalProject.html
 
 ## Author
 Kalusha Aguti  
-M.S. Geography (GIS & Remote Sensing)  
+M.S. Geography (GIS & Data Analytics Applications)  
 Southern Illinois University Edwardsville
